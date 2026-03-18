@@ -8,7 +8,6 @@ public class AdMainDTO {
 	private String memberDate;
 	
 	
-	private int boardNumber;
 	private String boardTitle;
 	private String boardDate;
 	
@@ -23,9 +22,6 @@ public class AdMainDTO {
 	}
 	public String getMemberDate() {
 		return memberDate;
-	}
-	public int getBoardNumber() {
-		return boardNumber;
 	}
 	public String getBoardTitle() {
 		return boardTitle;
