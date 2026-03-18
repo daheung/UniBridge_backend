@@ -9,6 +9,7 @@ public class AdMatchingCancelDTO {
 //		    mentee_number    NUMBER NOT NULL,
 //		    subject_number   NUMBER NOT NULL,
 //		    matching_cancel  DATE,
+//			matching_can_reason  VARCHAR(1024),
 //		    CONSTRAINT pk_ub_mt PRIMARY KEY (matching_number),
 //		    CONSTRAINT fk_ub_mt_subject FOREIGN KEY (subject_number) REFERENCES UB_SUBJECT(subject_number),
 //		    CONSTRAINT fk_ub_mt_mentor FOREIGN KEY (mentor_number) REFERENCES UB_MEMBER(member_number),
@@ -26,6 +27,7 @@ public class AdMatchingCancelDTO {
 	private int subjectNumber;
 	private String subjectName;
 	private String matchingCancel;
+	private String matching_can_reason;
 	
 	
 	public int getMatchingNumber() {
@@ -57,6 +59,9 @@ public class AdMatchingCancelDTO {
 	}
 	public String getMatchingCancel() {
 		return matchingCancel;
+	}
+	public String getMatching_can_reason() {
+		return matching_can_reason;
 	}
 	
 	

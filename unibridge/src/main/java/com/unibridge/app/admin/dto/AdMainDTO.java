@@ -7,6 +7,7 @@ public class AdMainDTO {
 	private String memberType;
 	private String memberDate;
 	
+	
 	private int boardNumber;
 	private String boardTitle;
 	private String boardDate;

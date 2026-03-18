@@ -14,6 +14,19 @@ public class AdminDTO {
 	private String adminPw;
 	private String adminNickname;
 
+	public void setAdminNumber(int adminNumber) {
+		this.adminNumber = adminNumber;
+	}
+	public void setAdminId(String adminId) {
+		this.adminId = adminId;
+	}
+	public void setAdminPw(String adminPw) {
+		this.adminPw = adminPw;
+	}
+	public void setAdminNickname(String adminNickname) {
+		this.adminNickname = adminNickname;
+	}
+	
 	public int getAdminNumber() {
 		return adminNumber;
 	}
