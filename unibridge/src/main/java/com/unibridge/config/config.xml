@@ -28,6 +28,10 @@
       <typeAlias type="com.unibridge.app.noticeBoard.dto.NoticeBoardDTO"             alias="NoticeBoardDTO"    />
       <typeAlias type="com.unibridge.app.noticeBoard.dto.NoticeBoardListDTO"         alias="NoticeBoardListDTO"/>
       <typeAlias type="com.unibridge.app.mypage.mentoring.dto.MentoringDTO" alias="MentoringDTO"></typeAlias>
+      
+      <!--  API DTO  -->
+      <typeAlias type="com.unibridge.api.admin.dto.AdminUserMMDTO" alias="AdminUserMMDTO"></typeAlias>
+      <typeAlias type="com.unibridge.api.admin.dto.AdminReportDTO" alias="AdminReportDTO"></typeAlias>
    </typeAliases>
 
    <environments default="oracle">
@@ -54,6 +58,10 @@
       <mapper resource="com/unibridge/mapper/mentoringMapper.xml" />
       <mapper resource="com/unibridge/mapper/mainMapper.xml"/>
       <mapper resource="com/unibridge/mapper/NoticeBoardMapper.xml" />
+      
+      <!--  API  -->
+      <mapper resource="com/unibridge/mapper/apiAdminUserMMMapper.xml" />
+      <mapper resource="com/unibridge/mapper/apiAdminReportMapper.xml" />
    </mappers>
    
 </configuration>
