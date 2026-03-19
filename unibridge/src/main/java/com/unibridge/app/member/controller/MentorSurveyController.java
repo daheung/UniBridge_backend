@@ -36,7 +36,7 @@ public class MentorSurveyController implements Execute{
 	private void doGet(HttpServletRequest request, HttpServletResponse response) {
 		
 		//멘토 회원 설문조사 이동
-        outResult.setPath("/app/user/mentee/myPage/userSurvey/userSurvey.jsp");
+        outResult.setPath("/app/user/mentor/myPage/userSurvey/userSurvey.jsp");
         outResult.setRedirect(false);
 	
 	}

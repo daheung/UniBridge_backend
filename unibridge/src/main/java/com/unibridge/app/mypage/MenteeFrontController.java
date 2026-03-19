@@ -13,7 +13,6 @@ import com.unibridge.app.member.controller.MenteeMangeController;
 import com.unibridge.app.member.controller.MatchingController;
 import com.unibridge.app.member.controller.MenteeUpdateOkController;
 import com.unibridge.app.member.controller.MenteeVerifyController;
-import com.unibridge.app.mypage.matching.controller.MentorMatchingController;
 import com.unibridge.app.mypage.matching.controller.PayLogController;
 import com.unibridge.app.mypage.survey.controller.MenteeSurveyController;
 

@@ -26,7 +26,7 @@ public class MentoringFrontController implements Execute {
 			case "mentoringCreate.my":
 				System.out.println("[Log] 분기: 등록 페이지 이동");
 				result = new Result();
-				result.setPath("/app/user/mentor/myPage/userMentoing/mentoringCreate.jsp");
+				result.setPath("/app/user/mentor/myPage/userMentoring/mentoringCreate.jsp");
 				result.setRedirect(false); // forward 방식
 				break;
 			case "mentoringWriteOk.my":

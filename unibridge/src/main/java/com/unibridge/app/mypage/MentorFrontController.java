@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.unibridge.app.Execute;
 import com.unibridge.app.Result;
+import com.unibridge.app.member.controller.MatchingController;
 import com.unibridge.app.member.controller.MentorDeleteController;
 import com.unibridge.app.member.controller.MentorMangeController;
 import com.unibridge.app.member.controller.MentorSurveyController;
 import com.unibridge.app.member.controller.MentorUpdateOkController;
 import com.unibridge.app.member.controller.MentorVerifyController;
-import com.unibridge.app.mypage.matching.controller.MentorMatchingController;
 import com.unibridge.app.mypage.mentoring.controller.MentoringFrontController;
 
 public class MentorFrontController implements Execute {
@@ -64,7 +64,7 @@ public class MentorFrontController implements Execute {
 			break;
 		case "matching.my": // 매칭정보
 			System.out.println("[Log] 결과: MatchingController 실행 시도...");
-			this.outResult = new MentorMatchingController().execute(request, response);
+			this.outResult = new MatchingController().execute(request, response);
 			System.out.println("[Log] 결과: MatchingController 실행 완료!");
 			break;   
         // 멘토링 관련 요청들을 모두 MentoringFrontController로 토스
