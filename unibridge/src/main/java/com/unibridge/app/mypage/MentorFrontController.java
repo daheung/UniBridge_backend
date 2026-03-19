@@ -1,7 +1,6 @@
 package com.unibridge.app.mypage;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,11 +16,12 @@ import com.unibridge.app.member.controller.MentorVerifyController;
 import com.unibridge.app.mypage.mentoring.controller.MentoringFrontController;
 
 public class MentorFrontController implements Execute {
-	Result outResult = new Result();
 	
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Result outResult = new Result();
+		
 		// 멘토 컨트롤러
 		String requestURI = request.getRequestURI();
 		String target = extractTargetPath(requestURI);
@@ -31,12 +31,12 @@ public class MentorFrontController implements Execute {
 		switch (target) {
 		case  "myPage.my": // 마이페이지
 			System.out.println("[Log] 결과: MentorMangeController 실행 시도...");
-			this.outResult = new MentorMangeController().execute(request, response);
+			outResult = new MentorMangeController().execute(request, response);
 			System.out.println("[Log] 결과: MentorMangeController 실행 완료!");
 			break;
 		case "verify.my": // 인증 로직 처리
 			System.out.println("[Log] 결과: MentorVerifyController 실행 시도...");
-		    this.outResult = new MentorVerifyController().execute(request, response);
+		    outResult = new MentorVerifyController().execute(request, response);
 		    System.out.println("[Log] 결과: MentorVerifyController 실행 완료!");
 		    break;
 		case "updateOk.my":
@@ -47,24 +47,24 @@ public class MentorFrontController implements Execute {
             break;
 		case "finishUpdate.my": // 수정 완료 단순 이동 처리
             System.out.println("[Log] 결과: 수정 완료 후 마이페이지 메인으로 리다이렉트");
-            this.outResult = new Result();
+            outResult = new Result();
             // JSP가 아닌 '컨트롤러'를 호출해서 데이터를 새로고침함
-            this.outResult.setPath(request.getContextPath() + "/auth/mentor/myPage.my");
-            this.outResult.setRedirect(true); 
+            outResult.setPath(request.getContextPath() + "/auth/mentor/myPage.my");
+            outResult.setRedirect(true); 
             break;
 		case "survey.my": // 설문조사
 			System.out.println("[Log] 결과: MentorSurveyController 실행 시도...");
-		    this.outResult = new MentorSurveyController().execute(request, response);
+		    outResult = new MentorSurveyController().execute(request, response);
 		    System.out.println("[Log] 결과: MentorSurveyController 실행 완료!");
 		    break;
 		case "delete.my": //회원탈퇴
 			System.out.println("[Log] 결과: MentorDeleteController 실행 시도...");
-			this.outResult = new MentorDeleteController().execute(request, response);
+			outResult = new MentorDeleteController().execute(request, response);
 			System.out.println("[Log] 결과: MentorDeleteController 실행 완료!");
 			break;
 		case "matching.my": // 매칭정보
 			System.out.println("[Log] 결과: MatchingController 실행 시도...");
-			this.outResult = new MatchingController().execute(request, response);
+			outResult = new MatchingController().execute(request, response);
 			System.out.println("[Log] 결과: MatchingController 실행 완료!");
 			break;   
         // 멘토링 관련 요청들을 모두 MentoringFrontController로 토스
@@ -75,7 +75,7 @@ public class MentorFrontController implements Execute {
         case "mentoringModifyOk.my":
         case "mentoringDeleteOk.my":
             System.out.println("[Log] 멘토링 관련 요청 -> MentoringFrontController로 이동");
-            this.outResult = new MentoringFrontController().execute(request, response);
+            outResult = new MentoringFrontController().execute(request, response);
             break;
         default:
             System.out.println("[Warn] 매칭되는 target이 없음: " + target);
