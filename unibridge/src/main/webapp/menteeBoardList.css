@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* ── 멘티 게시판 페이지 ── */
+/* ── 멘티 게시판 목록 페이지 ── */
 
 .container {
   width: 100%;
@@ -8,7 +8,6 @@
   box-sizing: border-box;
   padding: 60px 40px;
 }
-
 
 /* ── 글쓰기 버튼 ── */
 .write-btn-wrap {

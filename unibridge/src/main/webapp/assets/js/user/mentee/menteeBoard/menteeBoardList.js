@@ -28,26 +28,20 @@ document.addEventListener("DOMContentLoaded", function () {
       row.addEventListener('click', () => {
         const boardId = row.dataset.boardId;
         if (boardId) {
-          window.location.href = `/unibridge/app/user/mentee/menteeBoard/menteeBoardDetail.jsp?boardId=${boardId}`;
+          window.location.href = `/unibridge/MenteeBoardDetail.jsp?boardId=${boardId}`;
         }
       });
     });
 	
+	// 3. 글작성 버튼
     const writeBtn = document.getElementById('menteeBoardWriteBtn');
     if (writeBtn) {
       writeBtn.addEventListener('click', () => {
-        // menteeBoardCreate.html로 이동
-        window.location.href = '/unibridge/app/user/mentee/menteeBoard/menteeBoardCreate.jsp';
+        // menteeBoardCreate.jsp로 이동
+        window.location.href = '/unibridge/MenteeBoardCreate.jsp';
       });
     }
   });
 
-  // 3. 글작성 버튼
-  const writeBtn = document.getElementById('menteeBoardWriteBtn');
-  if (writeBtn) {
-    writeBtn.addEventListener('click', () => {
-      window.location.href = '/unibridge/app/user/mentee/menteeBoard/menteeBoardCreate.jsp';
-    });
-  }
 });
 

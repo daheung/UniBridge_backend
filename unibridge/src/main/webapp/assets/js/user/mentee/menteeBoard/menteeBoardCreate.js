@@ -1,6 +1,27 @@
+// DOM 요소 가져오기
+const cntElement = document.querySelector('.cnt');
+const cancelButton = document.querySelector('.cancle-btn');
+const writeForm = document.getElementById('write-form');
+
+// 취소 버튼 클릭 핸들러
+cancelButton.addEventListener('click', () => {
+    // 게시글 목록 페이지로 이동
+    window.location.href = '/unibridge/MenteeboardList.jsp';
+});
+
+// 제목 최대 50자 제한
+  const subjectInput = document.getElementById('menteeBoardCreateSubject');
+  if (subjectInput) {
+    subjectInput.addEventListener('input', () => {
+      if (subjectInput.value.length > 50) {
+        subjectInput.value = subjectInput.value.slice(0, 50);
+      }
+    });
+  }
+
 // menteeBoardCreate.js
 
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
   // 글목록 버튼
   const backBtn = document.getElementById('menteeBoardCreateBackBtn');
   if (backBtn) {
@@ -31,13 +52,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 제목 최대 50자 제한
-  const subjectInput = document.getElementById('menteeBoardCreateSubject');
-  if (subjectInput) {
-    subjectInput.addEventListener('input', () => {
-      if (subjectInput.value.length > 50) {
-        subjectInput.value = subjectInput.value.slice(0, 50);
-      }
-    });
-  }
-});
+  
+});*/
