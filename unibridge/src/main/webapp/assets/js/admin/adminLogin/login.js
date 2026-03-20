@@ -9,28 +9,13 @@ loginForm.addEventListener("submit", function (event) {
   const idValue = adminId.value.trim();
   const pwValue = adminPw.value.trim();
 
- errorText.textContent = "";
+  errorText.textContent = "";
   
   if (!idValue || !pwValue) {
-    errorText.textContent = "아이디와 비밀번호를 입력해주세요.";
-    return;
-  }
-  
-
-	fetch("${pageContext.request.contextPath}/app/admin/loginOk.admin", {
-	  method: "POST",
-	  headers: {
-	    "Content-Type": "application/x-www-form-urlencoded",
-	  },
-	  body: `adminId=${idValue}&adminPw=${pwValue}`,
-	})
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const loginParam = urlParams.get('login');
-
-  if (loginParam === 'fail') {
-    errorText.textContent = "아이디또는 비밀번호가 일치하지 않습니다.";
+    errorText.textContent = "아이디와 비밀번호를 모두 입력해주세요.";
+ 
     return;
   }
 
+  loginForm.submit();		//전송
 });

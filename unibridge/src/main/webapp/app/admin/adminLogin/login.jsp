@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UniBridge 관리자 로그인</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminLogin/login.css" />
+  <script  defer src="${pageContext.request.contextPath}/assets/js/admin/adminLogin/login.js"></script>
 </head>
 <body>
   <main class="login-page">
@@ -24,7 +26,7 @@
       <p class="login-subtitle">ADMIN PANEL</p>
       <div class="login-divider"></div>
 
-      <form class="login-form" id="loginForm">
+      <form class="login-form" id="loginForm" method="post" action="${pageContext.request.contextPath}/loginOk.admin">
         <div class="input-wrap">
           <span class="input-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
@@ -32,13 +34,7 @@
               <path d="M5 19c1.4-3 4-4.5 7-4.5S17.6 16 19 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
           </span>
-          <input
-            type="text"
-            id="adminId"
-            name="adminId"
-            placeholder="아이디를 입력하세요"
-            autocomplete="username"
-          />
+          <input type="text" id="adminId" name="adminId" placeholder="아이디를 입력하세요" autocomplete="username"/>
         </div>
 
         <div class="input-wrap">
@@ -50,22 +46,21 @@
               <path d="M12 16.2V17.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
             </svg>
           </span>
-          <input
-            type="password"
-            id="adminPw"
-            name="adminPw"
-            placeholder="비밀번호를 입력하세요"
-            autocomplete="current-password"
-          />
+          <input type="password" id="adminPw" name="adminPw"  placeholder="비밀번호를 입력하세요"/>
         </div>
 
-        <p class="error-text" id="errorText"></p>
+        <p class="error-text" id="errorText">
+        <c:choose>
+        	<c:when test="${param.login == 'fail'}">아이디 또는 비밀번호가 일치하지 않습니다.</c:when>
+        	<%-- <c:when test="${empty adminId or empty adminPw}">아이디와 비밀번호를 입력해주세요.</c:when> --%>
+        </c:choose>
+        </p>
 
         <button type="submit" class="login-btn">로그인</button>
       </form>
     </section>
   </main>
 
-  <script src="${pageContext.request.contextPath}/assets/js/admin/adminLogin/login.js"></script>
+
 </body>
 </html>

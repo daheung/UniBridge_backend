@@ -160,8 +160,8 @@
                     </div>
                 </div>
             </div>
-
-        </main>
+		</c:if>
+     </main>
 
     </div>
 

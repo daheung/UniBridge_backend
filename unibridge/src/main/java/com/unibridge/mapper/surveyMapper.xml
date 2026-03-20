@@ -100,37 +100,29 @@
 	    FROM UB_SURVEY
 	    WHERE member_number = #{value}
 	</select>
-	
-	
-	<select id="selectMentorSurvey" parameterType="int" resultType="SurveyMentorDTO">
-	    SELECT 
-	        s.survey_number,
-	        s.member_number,
-	        sm.grad_school,
-	        sm.grad_depart,
-	        sm.grad_score,
-	        sm.subject_number
-	    FROM UB_SURVEY s
-	    JOIN UB_SURVEY_MENTOR sm ON s.survey_number = sm.survey_number
-	    WHERE s.member_number = #{memberNumber}
-	    ORDER BY s.survey_number DESC
-	    FETCH FIRST 1 ROW ONLY
-	</select>
-	
-	<select id="selectMenteeSurvey" parameterType="int" resultType="SurveyMenteeDTO">
-	    SELECT 
-	        s.survey_number,
-	        s.member_number,
-	        se.mentee_school,
-	        se.mentee_grade,
-	        se.mentee_hopeuni,
-	        se.mentee_hopemajor,
-	        se.subject_number
-	    FROM UB_SURVEY s
-	    JOIN UB_SURVEY_MENTEE se ON s.survey_number = se.survey_number
-	    WHERE s.member_number = #{memberNumber}
-	    ORDER BY s.survey_number DESC
-	    FETCH FIRST 1 ROW ONLY
-	</select>
+    
+    <select id="selectMentorSurvey" parameterType="int" resultType="SurveyMentorDTO">
+        SELECT * FROM (
+            SELECT 
+                s.survey_number, s.member_number,
+                sm.grad_school, sm.grad_depart, sm.grad_score, sm.subject_number
+            FROM UB_SURVEY s
+            JOIN UB_SURVEY_MENTOR sm ON s.survey_number = sm.survey_number
+            WHERE s.member_number = #{memberNumber}
+            ORDER BY s.survey_number DESC
+        ) WHERE ROWNUM = 1
+    </select>
+    
+    <select id="selectMenteeSurvey" parameterType="int" resultType="SurveyMenteeDTO">
+        SELECT * FROM (
+            SELECT 
+                s.survey_number, s.member_number,
+                se.mentee_school, se.mentee_grade, se.mentee_hopeuni, se.mentee_hopemajor, se.subject_number
+            FROM UB_SURVEY s
+            JOIN UB_SURVEY_MENTEE se ON s.survey_number = se.survey_number
+            WHERE s.member_number = #{memberNumber}
+            ORDER BY s.survey_number DESC
+        ) WHERE ROWNUM = 1
+    </select>
     
 </mapper>

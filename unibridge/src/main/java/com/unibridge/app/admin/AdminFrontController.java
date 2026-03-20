@@ -10,7 +10,10 @@ import com.unibridge.app.Result;
 import com.unibridge.app.admin.controller.AdminLoginController;
 import com.unibridge.app.admin.controller.AdminLoginOkController;
 import com.unibridge.app.admin.controller.AdminMainController;
+import com.unibridge.app.admin.controller.AdminMenteeBoardController;
+import com.unibridge.app.admin.controller.AdminMentorBoardController;
 import com.unibridge.app.admin.controller.AdminReportController;
+import com.unibridge.app.admin.controller.AdminReportListController;
 import com.unibridge.app.admin.controller.AdminUserMMController;
 
 public class AdminFrontController extends HttpServlet {
@@ -57,9 +60,29 @@ public class AdminFrontController extends HttpServlet {
 	         System.out.println("관리자 메인 페이지 화면 출력 완료");
 	         break;
 		
-		case  "report.admin":
+	    case "menteeBoardList.admin":
+	    case "/menteeBoardList.admin":
+	    	System.out.println("멘티 게시판 화면 출력 준비");
+	    	result = new AdminMenteeBoardController().execute(request,response);
+	    	System.out.println("멘티 게시판 화면 출력 완료");
+	    	break;
+	         
+	    case "mentorBoardList.admin":
+	    case "/mentorBoardList.admin":
+	    	System.out.println("멘토 게시판 화면 출력 준비");
+	    	result = new AdminMentorBoardController().execute(request, response);
+	    	System.out.println("멘토 게시판 화면 출력 완료");
+	    	break;
+	    	
+	    
+	    case  "report.admin":
 		case "/report.admin":
 			result = new AdminReportController().execute(request, response);
+			break;
+			
+		case  "reportList.admin":
+		case "/reportList.admin":
+			result = new AdminReportListController().execute(request, response);
 			break;
 			
 		case  "userMM.admin":
