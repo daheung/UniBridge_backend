@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<!DOCTYPE html><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>멘티 설문조사</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/mentee/myPage/userSurvey/userSurvey.css">
     <script>
 	    // JS 파일에서 사용할 수 있도록 전역 변수 선언
@@ -41,9 +39,20 @@
             <div class="userTypeBox">
                 <div class="userItem">
                     <label>멘토/멘티</label>
-                    <div class="userValue">멘티</div>
+                    <div class="userValue">
+                    	${survey.surveyType eq 'MENTEE' ? '멘티' : 
+					      survey.surveyType eq 'MENTOR' ? '멘토' : '미정'}
+                    </div>
                 </div>
-                <div class="userItem"></div> <div class="userItem">
+                <div class="userItem">
+                	<label>상태</label>
+                    <div class="userValue">
+                    	${survey.surveyApproval eq 'P' ? '검토중' : 
+					      survey.surveyApproval eq 'T' ? '승인됨' : 
+					      survey.surveyApproval eq 'F' ? '거부됨' : '미작성'}
+                    </div>
+                </div> 
+                <div class="userItem">
                     <label>학교</label>
                     <div class="userValue">${survey.menteeSchool}</div>
                 </div>
@@ -151,8 +160,10 @@
 
                             <div class="fileAttachSection">
                                 <p class="fileLabel">파일 첨부</p>
+                                
                                 <div class="fileInputWrapper">
-                                    <input type="file" id="surveyFile" accept=".pdf, .xlsx, .xls, .doc, .docx, .jpg, .png" onchange="updateFileName()">
+                                    <input type="file" id="surveyFile" name="surveyFile" accept=".pdf, .xlsx, .xls, .doc, .docx, .jpg, .png" onchange="updateFileName()">
+                                    
                                     <div class="fakeFileInput">
                                         <label for="surveyFile" id="fileSelector" name="surveyFile" class="fileSelectBtn">파일 선택</label>
                                         <label for="surveyFile" id="fileInfoDisplay" class="fileInfoActive" style="display: none;">

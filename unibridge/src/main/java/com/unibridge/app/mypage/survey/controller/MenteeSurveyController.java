@@ -40,6 +40,13 @@ public class MenteeSurveyController implements Execute {
 		
 		// 세션에서 로그인 정보 가져오기
 		HttpSession session = request.getSession(false);
+		
+		if (session == null || session.getAttribute("loginUser") == null) {
+	        outResult.setPath(request.getContextPath() + "/mvc/auth/index.main");
+	        outResult.setRedirect(true);
+	        return;
+	    }
+		
 		MemberDTO loginUser = (MemberDTO) session.getAttribute("loginUser");
 
 		if (loginUser != null) {
