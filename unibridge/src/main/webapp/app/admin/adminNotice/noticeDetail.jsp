@@ -33,7 +33,9 @@
     <div class="detail-actions">
       <button class="btn" id = "btnList">목록</button>
       <div>
+       <c:if test="${board.adminNumber eq loginMemberNumber}">
       	<button class="btn btn-blue" id="btnEdit">수정</button>
+        </c:if>
       	<button class="btn btn-red" id="btnDelete">삭제</button>
       </div>
     </div>
@@ -57,10 +59,14 @@
     .then(html => {
       document.getElementById("header-wrap").innerHTML = html;
       const s = document.createElement("script");
-      s.src = "/frontend/header/adminHeader.js";
+      s.src = "${pageContext.request.contextPath}/header/adminHeader.js";
       document.body.appendChild(s);
     });
   </script>
+  
+ 	<script>
+		const boardNumber = "${board.noticeboardNumber}";
+	</script>
   
   <script src="${pageContext.request.contextPath}/assets/js/admin/adminNotice/noticeDetail.js"></script>
 </body>

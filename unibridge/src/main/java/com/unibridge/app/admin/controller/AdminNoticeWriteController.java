@@ -18,14 +18,14 @@ public class AdminNoticeWriteController implements Execute{
 			throws ServletException, IOException {
 		
 		System.out.println("게시글 작성 페이지 컨트롤러 이동 완료");
-		AdminDAO adminDAO = new AdminDAO();
 		Result result = new Result();
 		HttpSession session = request.getSession();
 		Integer adminNumber = (Integer)session.getAttribute("adminNumber");
 		String path = null;
 		
+		System.out.println("작성 관리자 번호 : " + adminNumber);
+		
 		path = "/app/admin/adminNotice/noticeWrite.jsp";
-		request.setAttribute("adminNickname", adminDAO.getMemberNickname(adminNumber));
 		
 		result.setPath(path);
 		result.setRedirect(false);

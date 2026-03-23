@@ -30,7 +30,7 @@ public class AdNoticeBoardDTO {
 	private int adminNumber;
 	private String adminNickname;
 	private int contestNumber;
-	private int fileNumber;
+	private Integer fileNumber;
 	private FileDTO file;
 	
 	
@@ -83,10 +83,10 @@ public class AdNoticeBoardDTO {
 	public void setContestNumber(int contestNumber) {
 		this.contestNumber = contestNumber;
 	}
-	public int getFileNumber() {
+	public Integer getFileNumber() {
 		return fileNumber;
 	}
-	public void setFileNumber(int fileNumber) {
+	public void setFileNumber(Integer fileNumber) {
 		this.fileNumber = fileNumber;
 	}
 	public String getAdminNickname() {

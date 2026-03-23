@@ -39,18 +39,21 @@ public class AdminNoticeDetailController implements Execute {
 			return result;
 		}
 		
+		if(boardDTO.getFileNumber() != null) {
 		//첨부파일 가져오기
-		FileDTO file = fileDAO.selectFile(boardNumber);
+		FileDTO file = fileDAO.selectFile(boardDTO.getFileNumber());
 		System.out.println("==파일 확인==");
 		System.out.println(file);
 		System.out.println("===========");
-		
+
 		//첨부파일 붙이기
 		boardDTO.setFile(file);
+		};
 		
 		//로그인 한 사용자 번호 가져오기
 		Integer loginMemberNumber = (Integer) request.getSession().getAttribute("adminNumber");
 		System.out.println("로그인 한 멤버 번호 : " + loginMemberNumber);
+		request.setAttribute("loginMemberNumber", loginMemberNumber);
 		
 		//현재 게시글 작성자 번호 가져오기
 		int boardWriterNumber = boardDTO.getAdminNumber();

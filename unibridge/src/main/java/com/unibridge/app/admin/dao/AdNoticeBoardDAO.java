@@ -73,4 +73,29 @@ public class AdNoticeBoardDAO {
 			return sqlSession.selectOne("admin.noticeSelectOne", boardNumber);
 		}
 		
+		public int insertBoard(AdNoticeBoardDTO boardDTO) {
+			System.out.println("게시글 작성 - insertBoard 메소드 실행");
+			int insert = sqlSession.insert("admin.noticeInsert", boardDTO);
+			System.out.println(boardDTO + "===출력");
+			System.out.println("insert 결과 : " + insert);
+			System.out.println("생성된 boardNumber : " + boardDTO.getNoticeboardNumber());
+			return boardDTO.getNoticeboardNumber();
+		}
+		
+		public Integer fileNumberSelect(int boardNumber) {
+			return sqlSession.selectOne("admin.noticeNumberToFileNumber",boardNumber);
+		}
+		
+		public void updateBoard(AdNoticeBoardDTO boardDTO) {
+			System.out.println("게시글 수정 - updateBoard 메소드 실행");
+			sqlSession.update("admin.noticeUpdate", boardDTO);
+			System.out.println("게시글 수정 쿼리 실행 완료");
+		}
+		
+		public void deleteBoard(int boardNumber) {
+			System.out.println("게시글 삭제");
+			sqlSession.delete("admin.noticeDelete", boardNumber);
+			System.out.println("게시글 삭제 쿼리 실행 완료");
+		}
+		
 }

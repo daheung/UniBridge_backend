@@ -329,6 +329,17 @@
 		mentorBoard_ID = #{mentorboardNumber}
 	</delete>
 	
+	<!-- 멘토 게시판 댓글 전체 조회 -->
+	<select id="mentorSelectCommentList" parameterType="int" resultType="AdMentorBoardCommentDTO">
+		SELECT 
+	        MENTOR_COM_ID as mentorComNumber,  MENTOR_COM_CONTENT as mentorComContent, 
+	        MENTOR_COM_DATE as mentorComDate, 
+	        UM.MEMBER_NICKNAME as memberNickname
+	    FROM UB_MENTOR_BOARD_COMMENT MBC
+	    JOIN UB_MEMBER UM ON MBC.MEMBER_NUMBER = UM.MEMBER_NUMBER
+	    WHERE MENTORBOARD_ID = #{boardNumber}
+	    ORDER BY MENTOR_COM_DATE DESC
+	</select>
 
 	
 	<!-- 공지사항 -->
@@ -426,18 +437,37 @@
 	</select>
 	
 
-	<!-- 멘토 게시판 댓글 전체 조회 -->
-	<select id="mentorSelectCommentList" parameterType="int" resultType="AdMentorBoardCommentDTO">
-		SELECT 
-	        MENTOR_COM_ID as mentorComNumber,  MENTOR_COM_CONTENT as mentorComContent, 
-	        MENTOR_COM_DATE as mentorComDate, 
-	        UM.MEMBER_NICKNAME as memberNickname
-	    FROM UB_MENTOR_BOARD_COMMENT MBC
-	    JOIN UB_MEMBER UM ON MBC.MEMBER_NUMBER = UM.MEMBER_NUMBER
-	    WHERE MENTORBOARD_ID = #{boardNumber}
-	    ORDER BY MENTOR_COM_DATE DESC
+	<!-- 공지 글 작성  -->
+	<insert id="noticeInsert" parameterType="AdNoticeBoardDTO">
+		<selectKey keyProperty="noticeboardNumber" resultType="int"
+			order="BEFORE">
+			SELECT SEQ_NOTICEBOARD.nextVal FROM DUAL
+		</selectKey>
+		INSERT INTO UB_noticeboard(noticeboard_number, board_title, board_content, admin_number, board_type, board_date)
+		VALUES(#{noticeboardNumber}, #{boardTitle}, #{boardContent}, #{adminNumber}, #{boardType} , sysdate)
+	</insert>
+	
+	<!-- 공지글에 링크되어 있는 파일 번호 확인 -->
+	<select id="noticeNumberToFileNumber" resultType="int">
+		select file_number
+		from UB_NoticeBoard
+		where noticeboard_Number = #{boardNumber}
 	</select>
 
+	<!-- 공지글 수정 -->
+	<update id ="noticeUpdate">
+		update UB_NoticeBoard
+		SET board_title=#{boardTitle},
+		board_content=#{boardContent},
+		file_number=#{fileNumber}
+		WHERE
+		noticeboard_number=#{noticeboardNumber}
+	</update>
 
-
+	<!-- 공지글 삭제 -->
+	<delete id ="noticeDelete">
+		delete From UB_noticeboard
+		where
+		noticeBoard_number=#{noticeboardNumber}
+	</delete>
 </mapper>

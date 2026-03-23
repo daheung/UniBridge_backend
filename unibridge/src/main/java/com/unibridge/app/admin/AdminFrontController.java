@@ -27,8 +27,12 @@ import com.unibridge.app.admin.controller.AdminMentorBoardEditOkController;
 import com.unibridge.app.admin.controller.AdminMentorBoardWriteController;
 import com.unibridge.app.admin.controller.AdminMentorBoardWriteOkController;
 import com.unibridge.app.admin.controller.AdminNoticeBoardController;
+import com.unibridge.app.admin.controller.AdminNoticeDeleteOkController;
 import com.unibridge.app.admin.controller.AdminNoticeDetailController;
+import com.unibridge.app.admin.controller.AdminNoticeEditController;
+import com.unibridge.app.admin.controller.AdminNoticeEditOkController;
 import com.unibridge.app.admin.controller.AdminNoticeWriteController;
+import com.unibridge.app.admin.controller.AdminNoticeWriteOkController;
 import com.unibridge.app.admin.controller.AdminReportController;
 import com.unibridge.app.admin.controller.AdminReportDeleteController;
 import com.unibridge.app.admin.controller.AdminReportDetailController;
@@ -212,8 +216,34 @@ public class AdminFrontController extends HttpServlet {
 	    	System.out.println("공지 생성 화면 출력 완료");
 	    	break;
 	    	
+	    case "noticeWriteOk.admin":
+	    case "/noticeWriteOk.admin":
+	    	System.out.println("공지 생성 준비");
+	    	result = new AdminNoticeWriteOkController().execute(request, response);
+	    	System.out.println("공지 생성 완료");
+	    	break;
 	    	
 	    	
+	    case "noticeEdit.admin":
+	    case "/noticeEdit.admin":
+	    	System.out.println("공지 수정 화면 출력 준비");
+	    	result = new AdminNoticeEditController().execute(request, response);
+	    	System.out.println("공지 수정 화면 출력");
+	    	break;
+	    	
+	    case "noticeEditOk.admin":
+	    case "/noticeEditOk.admin":
+	    	System.out.println("공지 수정 준비");
+	    	result = new AdminNoticeEditOkController().execute(request, response);
+	    	System.out.println("공지 수정 완료");
+	    	break;
+	    	
+	    case "noticeDeleteOk.admin":
+	    case "/noticeDeleteOk.admin":
+	    	System.out.println("공지 삭제 준비");
+	    	result = new AdminNoticeDeleteOkController().execute(request, response);
+	    	System.out.println("공지 삭제 완료");
+	    	break;
 	    	
 	    case  "report.admin":
 		case "/report.admin":
