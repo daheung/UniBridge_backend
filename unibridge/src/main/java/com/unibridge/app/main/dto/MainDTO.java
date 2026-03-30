@@ -186,12 +186,12 @@ public class MainDTO {
 		}
 
 
-		public String getmemberName() {
+		public String getMemberName() {
 			return memberName;
 		}
 
 
-		public void setmemberName(String memberName) {
+		public void setMemberName(String memberName) {
 			this.memberName = memberName;
 		}
 
