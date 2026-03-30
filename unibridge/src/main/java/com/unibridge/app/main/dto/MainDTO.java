@@ -117,7 +117,7 @@ public class MainDTO {
 	    private String mentoringTitle;
 	    private String mentoringGoal;
 	    private String subjectName;
-	    private String memberNickname;
+	    private String memberName;
 	    private String fileName;     // 프로필 이미지 파일명
 	    private String gradSchool;   // 학교 명
 	    private String gradDepart;   // 학과 명
@@ -186,13 +186,13 @@ public class MainDTO {
 		}
 
 
-		public String getMemberNickname() {
-			return memberNickname;
+		public String getmemberName() {
+			return memberName;
 		}
 
 
-		public void setMemberNickname(String memberNickname) {
-			this.memberNickname = memberNickname;
+		public void setmemberName(String memberName) {
+			this.memberName = memberName;
 		}
 
 
@@ -230,7 +230,7 @@ public class MainDTO {
 		public String toString() {
 			return "MentorCardDTO [mentoringNumber=" + mentoringNumber + ", memberNumber=" + memberNumber
 					+ ", mentoringTitle=" + mentoringTitle + ", mentoringGoal=" + mentoringGoal + ", subjectName="
-					+ subjectName + ", memberNickname=" + memberNickname + ", fileName=" + fileName + ", gradSchool="
+					+ subjectName + ", memberName=" + memberName + ", fileName=" + fileName + ", gradSchool="
 					+ gradSchool + ", gradDepart=" + gradDepart + ", memberGender=" + memberGender + "]";
 		}
 

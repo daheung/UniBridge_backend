@@ -132,7 +132,7 @@
 									</c:choose>
 								</div>
 								<div class="mentoRecommendInfo">
-									<p class="mentoRecommendName">${mentor.memberNickname}멘토</p>
+									<p class="mentoRecommendName">${mentor.memberName}멘토</p>
 									<p class="mentoRecommendSchool">${mentor.gradSchool} ${mentor.gradDepart}</p>
 									<p class="mentoRecommendMentoTitle">${mentor.mentoringTitle}</p>
 									<div class="mentoRecommendTags">
